@@ -1,0 +1,30 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Tous Employes</title>
+</head>
+<body>
+
+<table border="1">
+  <th>NOM</th>
+  <th>PRENOM</th>
+  <th>EMAIL</th>
+  <tr th:each="unEmploye : ${mesEmployes}">
+    <td th:text="${unEmploye.nom}"/>
+    <td th:text="${unEmploye.prenom}"/>
+    <td th:text="${unEmploye.email}"/>
+  </tr>
+</table>
+<h1>Employe supprimé :</h1>
+<table border="1">
+  <th>NOM</th>
+  <th>PRENOM</th>
+  <th>EMAIL</th>
+  <tr>
+    <td th:text="${emplSuppr.nom}"/>
+    <td th:text="${emplSuppr.prenom}"/>
+    <td th:text="${emplSuppr.email}"/>
+  </tr>
+</table>
+<a href ="/">retour</a>
+</body>
+</html>

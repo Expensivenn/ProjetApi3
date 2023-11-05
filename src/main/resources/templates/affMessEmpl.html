@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Messages</title>
+
+</head>
+<body>
+<table border="1">
+  <th>NOM</th>
+  <th>PRENOM</th>
+  <th>EMAIL</th>
+  <tbody>
+  <tr>
+    <td th:text="${emplRech.nom}"/>
+    <td th:text="${emplRech.prenom}"/>
+    <td th:text="${emplRech.email}"/>
+  </tr>
+  </tbody>
+</table>
+
+
+<table border="1">
+  <th>OBJET</th>
+  <th>DATE ENVOI</th>
+  <th>CONTENU</th>
+  <tbody>
+  <tr th:each="mess : ${emplMess}">
+    <td th:text="${mess.objet}"/>
+    <td th:text="${mess.dateenvoi}"/>
+    <td th:text="${mess.contenu}"></td>
+  </tr>
+  </tbody>
+</table>
+<a href ="/">retour</a>
+</body>
+
+</html>
