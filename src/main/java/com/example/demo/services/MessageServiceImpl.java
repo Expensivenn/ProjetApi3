@@ -6,6 +6,8 @@ import com.example.demo.repositories.EmployeRepository;
 import com.example.demo.repositories.MessageRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -45,6 +47,11 @@ public class MessageServiceImpl  implements InterfMessageService{
     @Override
     public List<Message> all() throws Exception {
         return messageRepository.findAll();
+    }
+
+    @Override
+    public Page<Message> allp(Pageable pageable) throws Exception {
+        return  messageRepository.findAll(pageable);
     }
 
     @Override

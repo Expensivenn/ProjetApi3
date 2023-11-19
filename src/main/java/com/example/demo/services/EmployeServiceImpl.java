@@ -4,6 +4,8 @@ import com.example.demo.entities.Employe;
 import com.example.demo.repositories.EmployeRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -53,6 +55,11 @@ public class EmployeServiceImpl implements InterfEmployeService {
     @Override
     public List<Employe> all() throws Exception {
         return employeRepository.findAll();
+    }
+
+    @Override
+    public Page<Employe> allp(Pageable pageable) throws Exception {
+        return  employeRepository.findAll(pageable);
     }
 
 }
