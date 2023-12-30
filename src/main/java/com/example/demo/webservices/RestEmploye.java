@@ -10,9 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(
+        origins = "*",
+        allowedHeaders = "*",
+        exposedHeaders = "*")
 @RestController
-@RequestMapping("/messages")
+@RequestMapping("/employes")
 public class RestEmploye {
     @Autowired
     private InterfEmployeService employeServiceImpl;

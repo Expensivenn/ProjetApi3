@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Date;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor @AllArgsConstructor @RequiredArgsConstructor
@@ -25,6 +26,10 @@ public class Message {
 
     @ManyToOne @JoinColumn(name = "id_employe")
     private Employe employe;
-
+    @ManyToMany
+    @JoinTable(name = "APIEMPLMES",
+            joinColumns = @JoinColumn(name = "id_message"),
+            inverseJoinColumns = @JoinColumn(name = "id_employe"))
+    private Set<Employe> destinataires; // Assuming a message can have multiple recipients
 
 }

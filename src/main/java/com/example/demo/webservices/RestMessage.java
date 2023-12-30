@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*", allowedHeaders = "*",exposedHeaders = "*")
 @RestController
 @RequestMapping("/messages")
 public class RestMessage {
@@ -37,6 +37,7 @@ public class RestMessage {
         System.out.println("recherche des message envoyé par  "+ emp.getNom());
         List<Message> messages;
         messages = messageServiceImpl.getMessagesEmp(emp);
+        System.out.println(messages.get(0));
         return new ResponseEntity<>(messages, HttpStatus.OK);
     }
 
