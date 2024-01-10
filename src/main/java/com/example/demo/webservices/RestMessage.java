@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders = "*",exposedHeaders = "*")
 @RestController
@@ -73,6 +75,22 @@ public class RestMessage {
         System.out.println("recherche de tous les messages");
         return new ResponseEntity<>(messageServiceImpl.all(), HttpStatus.OK);
     }
+    //---------------------Messages entre deux date par un employé donné--------------------------------------------
+    @RequestMapping(value = "/{date1}/{date2}/{id_employe}", method = RequestMethod.GET)
+    public ResponseEntity<List<Message>> listMessDate(@PathVariable(value = "date1") String date1,
+                                                      @PathVariable(value = "date2") String date2,
+                                                      @PathVariable(value = "id_employe") int id) throws Exception {
+        Employe emp = employeServiceImpl.read(id);
+        //System.out.println("recherche des message envoyé par  "+ emp.getNom());
+        Date dateToParse1;
+        Date dateToParse2;
+        dateToParse1 = new SimpleDateFormat("yyyy-MM-dd").parse(date1);
+        dateToParse2 = new SimpleDateFormat("yyyy-MM-dd").parse(date2);
+        List<Message> messages;
+        messages = messageServiceImpl.getMessagesBetweenTwoDates(dateToParse1,dateToParse2,emp);
+        //System.out.println(messages.get(0));
+        return new ResponseEntity<>(messages, HttpStatus.OK);
+    }
 
     //-------------------Retrouver tous les clients triés et par page--------------------------------------------------------
     @RequestMapping(value =  "/allp",method = RequestMethod.GET)
@@ -86,5 +104,6 @@ public class RestMessage {
         System.out.println("erreur : "+ex.getMessage());
         return ResponseEntity.notFound().header("error",ex.getMessage()).build();
     }
+
 }
 

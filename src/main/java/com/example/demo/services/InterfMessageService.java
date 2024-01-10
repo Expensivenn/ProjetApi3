@@ -12,5 +12,7 @@ public interface InterfMessageService extends InterfServices<Message>{
 
     List<Message> getMessagesDate(Date date);
 
+    List<Message> getMessagesBetweenTwoDates(Date date1,Date date2,Employe emp);
+
 
 }

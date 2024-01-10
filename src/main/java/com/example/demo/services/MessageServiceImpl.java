@@ -66,5 +66,11 @@ public class MessageServiceImpl  implements InterfMessageService{
         return lcf;
     }
 
+    @Override
+    public List<Message> getMessagesBetweenTwoDates(Date date1, Date date2, Employe emp) {
+        List<Message> lcf = messageRepository.findMessagesBetweenTwoDates(date1,date2,emp);
+        return lcf;
+    }
+
 }
 

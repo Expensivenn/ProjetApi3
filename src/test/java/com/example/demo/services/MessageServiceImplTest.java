@@ -32,7 +32,7 @@ public class MessageServiceImplTest {
             emp = new Employe(null,"test@test.com","NomTest","PrenomTest",1,new ArrayList<>());
             employeServiceImpl.create(emp);
             System.out.println("création de l'employe : "+emp);
-            message = new Message(null,"ObjetTest","ContenuTest",new Date(2000,1,1),null,emp);
+            message = new Message(null,"ObjetTest","ContenuTest",new Date(2000,1,1),null,emp,null);
             messageServiceImpl.create(message);
             System.out.println("création du message : "+message);
         }
@@ -111,7 +111,7 @@ public class MessageServiceImplTest {
     //On crée deux messages pour un employé et on verifie que la liste = 2
     @Test
     void getMessagesEmp() throws Exception {
-        Message message1 = new Message(null,"ObjetTest2","ContenuTest2",new Date(1,1,1),null,emp);
+        Message message1 = new Message(null,"ObjetTest2","ContenuTest2",new Date(1,1,1),null,emp,null);
         messageServiceImpl.create(message1);
         try {
             List<Message> lm = messageServiceImpl.getMessagesEmp(emp);
@@ -122,7 +122,7 @@ public class MessageServiceImplTest {
     }
     @Test
     void getMessagesDate() throws Exception {
-        Message message1 = new Message(null,"ObjetTest2","ContenuTest2",new Date(2000,1,1),null,emp);
+        Message message1 = new Message(null,"ObjetTest2","ContenuTest2",new Date(2000,1,1),null,emp,null);
         messageServiceImpl.create(message1);
         try {
             List<Message> lm = messageServiceImpl.getMessagesDate(new java.util.Date(2000,1,1));
